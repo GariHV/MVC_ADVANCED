@@ -20,4 +20,7 @@ define('CSS', BASE_URL . '/public/assets/css');
 //JS
 define('JS', BASE_URL . '/public/assets/js');
 
+//HTML
+define('HTML', BASE_URL . '/public/assets/html');
+
 ?>

@@ -45,7 +45,7 @@ body{
 #main{
 
     padding: 20px 0px;
-    width: 500px;
+    width: 95%;
     margin: 0 auto;
 }
 
@@ -55,4 +55,14 @@ body{
 
 .error{
     color: #ac2323;
+}
+
+.hide{
+    display: none;
+    visibility: hidden;
+}
+
+#jsGrid{
+    width: 100%;
+    margin: 0 auto;
 }
