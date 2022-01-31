@@ -21,8 +21,12 @@ class Nuevo extends Controller{
             $state          = $_POST['state'];
             $postal_code    = $_POST['postal_code'];
 
-            $this->model->insert(['id' => $id, 'name' => $name, 'last_name' => $last_name, 'email' => $email, 'gender_id' => $gender_id, 'age' => $age, 'phone_number' => $phone_number, 'city' => $city,'phone_number' => $phone_number, 'street_address' => $street_address, 'state' => $state, 'postal_code' => $postal_code]);
-            echo "Empleado creado";
+            if($this->model->insert(['id' => $id, 'name' => $name, 'last_name' => $last_name, 'email' => $email, 'gender_id' => $gender_id, 'age' => $age, 'phone_number' => $phone_number, 'city' => $city,'phone_number' => $phone_number, 'street_address' => $street_address, 'state' => $state, 'postal_code' => $postal_code])){
+                echo "Nuevo Empleado creado";
+            }else{
+                echo "Error en la creación";
+            }
+
         }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Consulta extends Controller{
+class Datos extends Controller{
 
     function __construct()
     {
@@ -13,7 +13,7 @@ class Consulta extends Controller{
     function render(){
         $empleados = $this->model->get();
         $this->view->empleados = $empleados;
-        $this->view->render('consulta/index');
+        $this->view->render('datos/index');
 
     }
 
