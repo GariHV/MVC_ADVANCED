@@ -1,20 +1,33 @@
 // todo Javascript Content
 
+console.log(window.location.href)
+
+var loc= window.location.href;
+
 //todo return all data in Employees.json
 async function callDataEmploee() {
     let result = []
     try {
         result = await $.ajax({
-            url: ".././resources/employees.json",
+            url: `${loc}/datos`,
             success: function (data) {
-                $dataEmployee = data;
+                console.log(data);
+                dataEmployee = data;
             }
         })
-        return result;
+        return JSON.parse(result);
     } catch (error) {
         console.error("Don't load the Data");
     }
 };
+// dataEmployee=[];
+// async function callDataEmploee() {
+// const response = await fetch('./views/datos/index.php')
+// const data = await response.json()
+// console.log(data);
+// }
+
+
 
 
 //todo call JSGrid
@@ -82,7 +95,7 @@ async function callGrid() {
         onItemDeleted: function (args) {
             $.ajax({
                 type: "DELETE",
-                url: `.././src/library/employeeController.php?delEmployee=${args.item.id}`,
+                url: `${loc}models/moddel/delEmployee=${args.item.id}`,
                 success: function (data) {
                     alert("The user has been deleted");
                     //    callGrid();

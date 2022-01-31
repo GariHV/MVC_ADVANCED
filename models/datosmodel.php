@@ -24,9 +24,12 @@ class DatosModel extends Model{
                     $item->postal_code    = $row['postal_code'];
                     array_push($items, $item);
                 }
+                echo json_encode($items);
                 return $items;
         }catch(PDOException $e){
             return [];
         }
     }
 }
+
+//echo 'pepe';

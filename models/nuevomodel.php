@@ -16,3 +16,7 @@ class NuevoModel extends Model{
         }
     }
 }
+
+
+
+public function delEmployee()

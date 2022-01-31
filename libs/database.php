@@ -11,7 +11,7 @@ class Database{
     {
         $this->host = constant ('HOST');
         $this->db = constant ('DB');
-        echo $this->db;
+        // echo $this->db;
         $this->user = constant ('USER');
         $this->password = constant ('PASSWORD');
         $this->charset = constant ('CHARSET');
