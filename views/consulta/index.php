@@ -11,6 +11,7 @@
 
     <div id="main">
         <h1 class='center'> Sección de consulta</h1>
+        
     </div>
 
     <?php require 'views/footer.php'; ?>
