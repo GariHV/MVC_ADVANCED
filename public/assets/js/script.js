@@ -1,7 +1,5 @@
 // todo Javascript Content
 
-console.log(window.location.href)
-
 var loc= window.location.href;
 
 //todo return all data in Employees.json
@@ -11,7 +9,6 @@ async function callDataEmploee() {
         result = await $.ajax({
             url: `${loc}/datos`,
             success: function (data) {
-                console.log(data);
                 dataEmployee = data;
             }
         })
@@ -20,14 +17,6 @@ async function callDataEmploee() {
         console.error("Don't load the Data");
     }
 };
-// dataEmployee=[];
-// async function callDataEmploee() {
-// const response = await fetch('./views/datos/index.php')
-// const data = await response.json()
-// console.log(data);
-// }
-
-
 
 
 //todo call JSGrid
@@ -95,8 +84,9 @@ async function callGrid() {
         onItemDeleted: function (args) {
             $.ajax({
                 type: "DELETE",
-                url: `${loc}models/moddel/delEmployee=${args.item.id}`,
+                url: `${loc}consulta/getEmployee/${args.item.id}`,
                 success: function (data) {
+                    console.log(`deleted id= ${args.item.id}`)
                     alert("The user has been deleted");
                     //    callGrid();
                 }
@@ -110,8 +100,7 @@ async function callGrid() {
 
         //todo event listener to redirect to employee.php with id and charge all data in the form
         rowDoubleClick: function (args) {
-            $idget = args["item"].id
-            window.location.assign(`./../src/employee.php?id=${$idget}`)
+            window.location.assign(`${loc}consulta/getEmployee/${args.item.id}`)
         },
 
         onItemInserting: function (args) {
