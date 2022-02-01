@@ -20,6 +20,7 @@ class Consulta extends Controller{
     function getEmployee($getId = null){
         $id = $getId[0];
         $employee= $this->model->getEmployeeId($id);
+        $_SESSION['id_verEmpleado'] = $employee[0]->id;
         $this->view->employee = $employee;
 
 
@@ -30,7 +31,7 @@ class Consulta extends Controller{
     }
 
     function updateEmployee($getId){
-        $id = $getId[0];
+        $id = $getId;
         $name           = $_POST['name'];
         $last_name      = $_POST['last_name'];
         $email          = $_POST['email'];
@@ -41,7 +42,7 @@ class Consulta extends Controller{
         $street_address = $_POST['street_address'];
         $state          = $_POST['state'];
         $postal_code    = $_POST['postal_code'];
-
+        unset($_SESSION['id_verEmpleado']);
         if($this->model->update([
         'id'             => $getId[0],
         'name'           => $name,
@@ -55,24 +56,34 @@ class Consulta extends Controller{
         'state'          => $state,
         'postal_code'    => $postal_code])){
             // update employee
+            $employee = new Empleado();
+            $employee->id             = $id;
+            $employee->name           = $name;
+            $employee->last_name      = $last_name;
+            $employee->email          = $email;
+            $employee->gender_id      = $gender_id;
+            $employee->age            = $age;
+            $employee->phone_number   = $phone_number;
+            $employee->city           = $city;
+            $employee->street_address = $street_address;
+            $employee->state          = $state;
+            $employee->postal_code    = $postal_code;
 
-        $this->view->render('consulta/index');
+            $this->view->render('main/index');
         }else{
             //error
         }
     }
 
     function deleteEmployee($getId){
-        echo $getId;
         $id= $getId[0];
-
-        // if($this->model->delete($id)){
-        //     echo 'deleted';
-        // }else{
-        //     echo 'Try Again';
-        // }
-        // $this->view->render('main/index');
-        $this->view->render( 'ayuda/index');
+        if($this->model->delete($id)){
+            echo 'deleted';
+        }else{
+        echo 'Try Again';
+        }
+        $this->view->render('main/index');
+        //$this->view->render( 'ayuda/index');
     }
 
 }

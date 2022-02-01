@@ -11,8 +11,8 @@ if (($_POST)){
     foreach ($usersAll as $user ) {
         print_r($user->name);
         if($postEmail == $user->email){
+            echo "a";
             if($postPassword == $user->password){
-                session_start();
                 $_SESSION["email"]= $postEmail;
                 $_SESSION["user"]= $user->name;
                 $_SESSION["password"]=$postPassword;

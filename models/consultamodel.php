@@ -62,7 +62,6 @@ class ConsultaModel extends Model
 
     public function update($item)
     {
-        print_r($item['name']);
         $query = $this->db->connect()->prepare("UPDATE employees SET 
                     name           = :name,
                     last_name      = :last_name,

@@ -72,7 +72,7 @@ async function callGrid() {
             //console.log(args.item);
             $.ajax({
                 type: "POST",
-                url: ".././src/library/employeeController.php?modifyEmployee",
+                url: `${loc}consulta/getEmployee/${args.item.id}`,
                 data: args.item,
                 success: function (data) {
                     console.log(data)
@@ -84,7 +84,7 @@ async function callGrid() {
         onItemDeleted: function (args) {
             $.ajax({
                 type: "DELETE",
-                url: `${loc}consulta/getEmployee/${args.item.id}`,
+                url: `${loc}consulta/deleteEmployee/${args.item.id}`,
                 success: function (data) {
                     console.log(`deleted id= ${args.item.id}`)
                     alert("The user has been deleted");
@@ -96,6 +96,7 @@ async function callGrid() {
 
         //todo this need to be active to works double click
         rowClick: function (args) {
+            
         },
 
         //todo event listener to redirect to employee.php with id and charge all data in the form

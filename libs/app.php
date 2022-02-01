@@ -9,8 +9,8 @@ class App{
         $url = isset($_GET['url']) ? $_GET['url']: "/main";
         $url = rtrim($url, '/');
         $url = explode ('/', $url);
-        $_SESSION["email"] = null;
-        if($_SESSION["email"] !== null){
+/*         $_SESSION["email"] = null;
+        if($_SESSION["email"] !== null){ */
             if(empty($url[0])){
                     $archivoController = "controllers/main.php";
                     require_once $archivoController;
@@ -19,13 +19,13 @@ class App{
                     $controller->render();
                     return false;   
             }           
-        }else{
-            $archivoController = "controllers/login.php";
+/*         }else{ */
+/*             $archivoController = "controllers/login.php";
             require_once $archivoController;
             $controller = new Login();
             $controller->loadModel('login');
-            $controller->render();
-        }
+            $controller->render(); */
+/*         } */
 
         /* cuando entramos sin controlador especificado */
 
